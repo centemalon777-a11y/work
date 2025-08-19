@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:  #0a3131;; margin: 0; padding: 0; }
+ .question-container {
+  margin-top: 50px; /* Pushes it down from the top */
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+    h1 { text-align: center; }
+h1 { text-align: center; }
+    .question { font-size: 1.2em; margin-bottom: 20px; }
+    .options { list-style: none; padding: 0; }
+    .options li { margin-bottom: 10px; }
+    button { padding: 10px 20px; background:  #0a3131;; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    button:disabled { background: #ccc; }
+    .score { text-align: center; font-size: 1.1em; margin-top: 20px; }
+  </style>
+</head>
+<body>
+ 
+  
+ <div class="question-container">
+    <h1>CHEMISTRY</h1>
+    <h2>Acid, Base and Salt</h2>
+    <div id="quiz">
+      <div class="question" id="question"></div>
+      <ul class="options" id="options"></ul>
+     <button id="nextBtn">Next</button>
+  
+<button id="submitBtn">Submit</button>
+      <div class="score" id="score"></div>
+    <div id="timer"></div>
+
+    </div>
+
+  <script src="acid.js"></script>
+</body>
+</html>

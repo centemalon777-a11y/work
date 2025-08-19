@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELCOME</title>
+  <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* The container for the background */
+    .sliding-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: url("https://picsum.photos/id/1018/1920/1080") repeat-x;
+        background-size: cover;
+        animation: slide 20s linear infinite;
+        z-index: -1;
+    }
+
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* Content */
+    .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin-top: 20%;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin-top: 20px;
+        background: rgba(0,0,0,0.6);
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .btn:hover {
+        background: rgba(0,0,0,0.8);
+    }
+    
+    .navbar {
+     color: white;
+      } 
+      button{
+        background-color: bisque;
+      }
+</style>
+</head>
+<!-- Sliding background -->
+<div class="sliding-bg" id="bg"></div>
+
+<!-- Page content -->
+<div class="content">
+    <h1>THE WORD OF GOD</h1>
+    <p>THE BEST BIBLE WEBSITE.</p>
+    <button class="btn" id="toggleBtn">Pause</button>
+</div>
+
+<script>
+    const bg = document.getElementById('bg');
+    const toggleBtn = document.getElementById('toggleBtn');
+    let paused = false;
+
+    toggleBtn.addEventListener('click', () => {
+        if (!paused) {
+            bg.style.animationPlayState = 'paused';
+            toggleBtn.textContent = 'Play';
+        } else {
+            bg.style.animationPlayState = 'running';
+            toggleBtn.textContent = 'Pause';
+        }
+        paused = !paused;
+    });
+</script>
+<br>
+<br>
+<center>
+<div class="navbar">
+<button><a href="kk.html">NEXT</a></button>
+</center>
+</div>
+</body>
+</html>

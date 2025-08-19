@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friction - Physics Note</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .note {
+      background: #fff;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #003366;
+    }
+    h3 {
+      color: #006600;
+    }
+    p, li {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="note">
+    <h2>Physics Note: Friction</h2>
+
+    <h3>1. What is Friction?</h3>
+    <p>Friction is a force that opposes the relative motion or tendency of such motion of two surfaces in contact.</p>
+
+    <h3>2. Types of Friction</h3>
+    <ul>
+      <li><strong>Static Friction:</strong> Acts when there is no motion between the surfaces.</li>
+      <li><strong>Kinetic (Sliding) Friction:</strong> Acts when objects slide against each other.</li>
+      <li><strong>Rolling Friction:</strong> Acts when an object rolls over a surface.</li>
+
+<li><strong>Fluid Friction:</strong> Resistance offered by fluids (liquids and gases).</li>
+    </ul>
+
+    <h3>3. Laws of Friction</h3>
+    <ul>
+      <li>Friction is proportional to the normal force.</li>
+      <li>It is independent of the contact area.</li>
+      <li>It depends on the nature of the surfaces in contact.</li>
+    </ul>
+
+    <h3>4. Advantages of Friction</h3>
+    <ul>
+      <li>Enables walking</li>
+      <li>Allows vehicles to move</li>
+      <li>Helps hold and grip objects</li>
+    </ul>const questions = [
+   { q: "Who built the ark?", options: ["Noah", "Moses", "David", "Abraham"], answer: 0 },
+      { q: "How many disciples did Jesus have?", options: ["10", "12", "14", "7"], answer: 1 },
+      { q: "Where was Jesus born?", options: ["Nazareth", "Jerusalem", "Bethlehem", "Galilee"], answer: 2 },
+
+{ q: "Who betrayed Jesus?", options: ["Peter", "Judas", "John", "Paul"], answer: 1 },
+      { q: "What is the first book of the Bible?", options: ["Exodus", "Psalms", "Genesis", "Matthew"], answer: 2 },
+      { q: "How many days did God take to create the world?", options: ["5", "6", "7", "8"], answer: 1 },
+      { q: "Who led the Israelites out of Egypt?", options: ["Joshua", "Moses", "Aaron", "Joseph"], answer: 1 },
+      { q: "What is the last book of the Bible?", options: ["Revelation", "Genesis", "Malachi", "Acts"], answer: 0 },
+      { q: "Who was swallowed by a great fish?", options: ["Jonah", "Elijah", "Daniel", "Peter"], answer: 0 },
+      { q: "What did Jesus feed the 5000 with?", options: ["Bread & fish", "Meat & wine", "Fruits", "Water"], answer: 0 },
+      
+      { q: "What is the shortest verse in the Bible?", options: ["Jesus wept.", "Pray always.", "Love God.", "God is love."], answer: 0 },
+      { q: "Who wrote most of the New Testament?", options: ["Paul", "Peter", "John", "Matthew"], answer: 0 },
+      { q: "Who denied Jesus three times?", options: ["Judas", "Thomas", "Peter", "James"], answer: 2 },
+
+{ q: "What was the first miracle of Jesus?", options: ["Healing blind", "Walking on water", "Turning water to wine", "Raising Lazarus"], answer: 2 },
+      { q: "Who killed Goliath?", options: ["Saul", "David", "Solomon", "Samson"], answer: 1 },
+      { q: "Which apostle was a tax collector?", options: ["James", "Matthew", "Andrew", "Bartholomew"], answer: 1 },
+      { q: "What did God create on the first day?", options: ["Earth", "Man", "Light", "Sun"], answer: 2 },
+      { q: "What is the Bible's longest chapter?", options: ["Psalm 119", "John 3", "Genesis 1", "Psalm 23"], answer: 0 },
+      { q: "How many people were saved in the ark?", options: ["4", "6", "8", "10"], answer: 2 },
+      { q: "What river did Jesus get baptized in?", options: ["Jordan", "Nile", "Tigris", "Euphrates"], answer: 0 },
+      { q: "Who is the mother of Jesus?", options: ["Martha", "Mary", "Elizabeth", "Sarah"], answer: 1 },
+      { q: "What is the first commandment?", options: ["Do not kill", "Honor parents", "No other gods", "Keep Sabbath"], answer: 2 },
+      { q: "Who received the 10 commandments?", options: ["Abraham", "Moses", "David", "Isaiah"], answer: 1 },
+      { q: "Which book has the story of creation?", options: ["Exodus", "Genesis", "Psalms", "Romans"], answer: 1 },
+    ];
+      
+
+
+let currentQuestion = 0;
+let score = 0;
+let selectedOption = null;
+let timerInterval;
+let timeLeft = 30 * 60; // 30 minutes in seconds
+
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('timer');
+
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+  const s = (seconds % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+
+function startTimer() {
+  timerEl.textContent = `Time Left: ${formatTime(timeLeft)}`;
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = `Time Left: ${formatTime(timeLeft)}`;
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      showResult();
+      speak("Time is up! The quiz has ended.");
+    }
+  }, 1000);
+}
+
+function showQuestion() {
+  selectedOption = null;
+  nextBtn.disabled = true;
+  const q = questions[currentQuestion];
+  questionEl.textContent = q.question;
+  optionsEl.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.textContent = opt;
+    btn.onclick = () => selectOption(idx, btn);
+    li.appendChild(btn);
+    optionsEl.appendChild(li);
+  });
+  scoreEl.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+  // Show/hide buttons
+  if (currentQuestion === questions.length - 1) {
+    nextBtn.style.display = 'none';
+    submitBtn.style.display = 'inline-block';
+  } else {
+    nextBtn.style.display = 'inline-block';
+    submitBtn.style.display = 'none';
+  }
+}
+
+function selectOption(idx, btn) {
+  selectedOption = idx;
+  Array.from(optionsEl.querySelectorAll('button')).forEach(b => b.disabled = true);
+  const isCorrect = idx === questions[currentQuestion].answer;
+  btn.style.background = isCorrect ? '#28a745' : '#dc3545';
+  if (isCorrect) {
+    score++;
+    speak("Correct! Well done.");
+  } else {
+    const correctAnswer = questions[currentQuestion].options[questions[currentQuestion].answer];
+    speak("Incorrect. The correct answer is " + correctAnswer + ".");
+  }
+  nextBtn.disabled = false;
+  submitBtn.disabled = false;
+}
+
+nextBtn.onclick = () => {
+  currentQuestion++;
+  showQuestion();
+};
+
+submitBtn.onclick = showResult;
+
+function showResult() {
+  if (timerInterval) clearInterval(timerInterval);
+  questionEl.textContent = "Quiz Completed!";
+  optionsEl.innerHTML = '';
+  nextBtn.style.display = 'none';
+  submitBtn.style.display = 'none';
+  scoreEl.textContent = `Your Score: ${score} / ${questions.length}`;
+  speak(`Quiz completed. Your score is ${score} out of ${questions.length}.`);
+  saveScoreHistory(score, questions.length);
+  displayScoreHistory();
+}
+
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    const utter = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utter);
+  }
+}
+
+// Score history logic
+function saveScoreHistory(score, total) {
+  const history = JSON.parse(localStorage.getItem('scoreHistory') || '[]');
+  const now = new Date();
+  history.push({
+    date: now.toLocaleString(),
+    score: score,
+    total: total
+  });
+  localStorage.setItem('scoreHistory', JSON.stringify(history));
+}
+
+function displayScoreHistory() {
+  const historyList = document.getElementById('history-list');
+  if (!historyList) return;
+  const history = JSON.parse(localStorage.getItem('scoreHistory') || '[]');
+  historyList.innerHTML = '';
+  history.slice(-10).reverse().forEach(entry => {
+    const li = document.createElement('li');
+    li.textContent = `${entry.date}: ${entry.score} / ${entry.total}`;
+    historyList.appendChild(li);
+  });
+}
+
+displayScoreHistory();
+showQuestion();
+startTimer();
+
+    <h3>5. Disadvantages of Friction</h3>
+    <ul>
+      <li>Causes wear and tear</li>
+      <li>Leads to energy loss</li>
+      <li>Generates heat in machines</li>
+    </ul>
+
+    <h3>6. Reducing Friction</h3>
+    <ul>
+      <li>Use of lubricants</li>
+      <li>Using wheels or ball bearings</li>
+      <li>Smoothing surfaces</li>
+    </ul>
+  </div>
+</body>
+</html>
+```

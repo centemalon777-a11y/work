@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <style>   
+     body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a3131 60%, #007bff 100%);
+  margin: 0;
+  padding: 20px;
+   display: flex; justify-content: center; align-items: center;
+    height: 100vh;
+    }
+       .login-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+    h1{
+      color: azure;
+      width: 70%;
+      height: 87%;
+    }
+  
+    
+    input[type="email"], input[type="password"] {
+      width: 300%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  
+
+    button {
+      width: 300%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+   
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <section class="login-section">
+    <center>
+    <h2>LOGIN FORM</h2>
+    <form method="post" action="main.html" id="loginForm">
+      <input type="text" placeholder="Email" required>
+      <br>
+      <br>
+      <br>
+      <input type="text" placeholder="password" required>
+      <br>
+      <br>
+      <br>
+    
+      <input type="submit" value="LOGIN">
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("login successfully!");
+         <a href="main.html"> <button onclick="bookAppointment()">submit</button></a>
+    });
+  </script>
+
+</body>
+</html>

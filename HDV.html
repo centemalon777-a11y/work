@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to QuizHub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      animation: slideDown 1s ease-out;
+    }
+
+    nav {
+      background: #333;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .hero {
+      padding: 60px;
+      text-align: center;
+      background: url('your-image.jpg') no-repeat center center/cover;
+      color: white;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .content {
+      padding: 40px;
+      text-align: center;
+      animation: fadeInUp 2s ease;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 10px 0;
+      animation: fadeIn 3s ease-in;
+    }
+
+    /* Animations */
+
+@keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to QuizHub</h1>
+    <p>Your Learning Partner</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="quiz.html">Quizzes</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <h2>Test Your Knowledge</h2>
+    <p>Interactive quizzes for students</p>
+  </div>
+
+  <div class="content">
+    <h3>Why Use QuizHub?</h3>
+    <p>Learn, test yourself, and improve your academic performance with fun and simple quizzes.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 QuizHub. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

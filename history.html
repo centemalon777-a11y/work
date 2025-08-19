@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quiz Score</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+  .score-container { max-width: 600px; margin: auto; background: #0a3131; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
+  h1 { text-align: center; }
+  .feedback { font-size: 1.2em; margin: 10px 0; text-align: center; }
+  ul { list-style: none; padding: 0; }
+  li { background:#0a3131;  margin: 5px 0; padding: 10px; border-radius: 4px; color: white;}
+  button { display: block; margin: 20px auto; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; background-color: #0a3131; color: white; border-radius: 5px; }
+  button:hover { background-color: #0a3131; }
+</style>
+</head>
+<body>
+
+<section id="score-history">
+  <h2>Score History</h2>
+  <ul id="history-list"></ul>
+</section>
+  <div class="container">
+     <div id="score-history">
+  <h2>Score History</h2>
+  <ul id="history-list"></ul>
+</div>
+<button id="clearHistoryBtn">Clear History</button>
+    </div>
+
+  </div>
+  <script src="history.js"></script>
+</body>
+</html>
